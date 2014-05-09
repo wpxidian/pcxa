@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+	div.loc{
+		margin-left: 85px ;
+	}
+	.text{
+		font-weight: bold;
+		font-family:"华文中宋","宋体";
+		color:#462E00;
+	}
+   table tr{
+   	height: 30px;
+   }

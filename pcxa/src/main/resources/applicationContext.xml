@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/aop  
+        http://www.springframework.org/schema/aop/spring-aop.xsd  
+        http://www.springframework.org/schema/tx  
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- 使用 annotation -->  
+    <context:annotation-config/>  
+    <!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 -->   
+    <context:component-scan base-package="com.pcxa"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+	<!-- 定义数据源Bean -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>  
+        <property name="user" value="${jdbc.user}"/>  
+        <property name="password" value="${jdbc.password}"/>
+        
+        <property name="minPoolSize" value="5" />
+		<property name="maxPoolSize" value="30" />
+		<property name="initialPoolSize" value="10"/>
+		<property name="maxIdleTime" value="60"/>
+		<property name="acquireIncrement" value="5" />
+		<property name="maxStatements" value="0" />
+		<property name="checkoutTimeout" value="1000" />
+		<property name="idleConnectionTestPeriod" value="60" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="breakAfterAcquireFailure" value="true" />  
+	</bean>	
+	<!-- 定义SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<!-- 配置属性 -->
+		<property name="dataSource" ref="dataSource"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+			</props>
+		</property>
+		<!-- 包扫描的方式加载注解类 -->  
+        <property name="packagesToScan">  
+            <list>  
+                <value>com.pcxa.*</value>  
+            </list>  
+        </property>
+	</bean>	
+	<!--JDBC事务管理器,根据你的情况使用不同的事务管理器,如果工程中有Hibernate,就用Hibernate的事务管理器 -->  
+    <bean id="transactionManager"  
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>   
+    <!-- 用注解来实现事务管理 -->  
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 
+	<tx:advice id="txAdvice"  transaction-manager="transactionManager">
+    	<tx:attributes>
+    		<tx:method name="get*" read-only="true"/>
+    		<tx:method name="*" propagation="REQUIRED"/>
+    	</tx:attributes>
+    </tx:advice>
+    <aop:config> 
+    	<aop:pointcut  id="txPointcut" expression="execution(* com.pcxa.service.impl.*Impl.*(..))"/>
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>   
+    -->
+</beans>

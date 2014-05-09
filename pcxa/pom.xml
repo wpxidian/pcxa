@@ -1,0 +1,191 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.xidian.pcxa</groupId>  <!-- 项目名称 -->
+  <artifactId>pcxa-seller</artifactId><!-- 项目的模块名称 ，建议使用项目名称-模块名称来表示-->
+  <version>0.0.1-SNAPSHOT</version>	  <!-- 项目的版本名称 -->
+  <packaging>war</packaging>		  <!-- 打包的格式 -->
+  
+  <name>pcxa-seller</name>
+  <url>http://maven.apache.org</url> 
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<version.spring>3.2.8.RELEASE</version.spring>  
+    	<version.struts>2.2.3</version.struts>  
+    	<version.hibernate>3.6.7.Final</version.hibernate> 
+  </properties>
+  <!-- 依赖 -->
+  <dependencies>
+    	<dependency>  
+            <groupId>junit</groupId>  
+            <artifactId>junit</artifactId>  
+            <version>4.7</version>  
+            <scope>test</scope>  
+        </dependency>  
+        <!-- spring -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-beans</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-core</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-aop</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-web</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-orm</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-context</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-jdbc</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>javax.servlet</groupId>  
+            <artifactId>servlet-api</artifactId>  
+            <version>2.5</version>  
+            <scope>provided</scope>  
+        </dependency>
+         <dependency>  
+            <groupId>javax.servlet.jsp</groupId>  
+            <artifactId>jsp-api</artifactId>  
+            <version>2.1</version>  
+            <scope>provided</scope>  
+        </dependency>  
+        <dependency>  
+            <groupId>aopalliance</groupId>  
+            <artifactId>aopalliance</artifactId>  
+            <version>1.0</version>  
+        </dependency>  
+        <!-- struts2 -->  
+        <dependency>  
+            <groupId>org.apache.struts</groupId>  
+            <artifactId>struts2-core</artifactId>  
+            <version>${version.struts}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.apache.struts</groupId>  
+            <artifactId>struts2-spring-plugin</artifactId>  
+            <version>${version.struts}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.apache.struts</groupId>  
+            <artifactId>struts2-convention-plugin</artifactId>  
+            <version>${version.struts}</version>  
+        </dependency> 
+        <!-- <dependency> <groupId>org.apache.struts</groupId> <artifactId> struts2-convention-plugin</artifactId>   
+            <version>2.3.14</version> </dependency> -->  
+        <!-- hibernate -->  
+        <dependency>  
+            <groupId>mysql</groupId>  
+            <artifactId>mysql-connector-java</artifactId>  
+            <version>5.1.27</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.hibernate</groupId>  
+            <artifactId>hibernate-core</artifactId>  
+            <version>${version.hibernate}</version>  
+        </dependency>   
+        <dependency>  
+            <groupId>org.hibernate</groupId>  
+            <artifactId>hibernate-annotations</artifactId>  
+            <version>3.3.1.GA</version>  
+        </dependency>
+         <dependency>  
+            <groupId>org.hibernate</groupId>  
+            <artifactId>hibernate-entitymanager</artifactId>  
+            <version>${version.hibernate}</version>  
+        </dependency>   
+        <dependency>  
+            <groupId>c3p0</groupId>  
+            <artifactId>c3p0</artifactId>  
+            <version>0.9.1.2</version>  
+        </dependency>  
+ 
+        <dependency>  
+            <groupId>oro</groupId>  
+            <artifactId>oro</artifactId>  
+            <version>2.0.8</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>jstl</groupId>  
+            <artifactId>jstl</artifactId>  
+            <version>1.2</version>  
+        </dependency>  
+        <!-- <dependency> <groupId>net.lingala.zip4j</groupId> <artifactId>zip4j</artifactId>   
+            <version>1.3.1</version> </dependency> <dependency> <groupId>commons-codec</groupId>   
+            <artifactId>commons-codec</artifactId> <version>1.7</version> </dependency> -->  
+        <dependency>  
+            <groupId>commons-lang</groupId>  
+            <artifactId>commons-lang</artifactId>  
+            <version>2.6</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.aspectj</groupId>  
+            <artifactId>aspectjweaver</artifactId>  
+            <version>1.6.1</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>log4j</groupId>  
+            <artifactId>log4j</artifactId>  
+            <version>1.2.14</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>javassist</groupId>  
+            <artifactId>javassist</artifactId>  
+            <version>3.12.0.GA</version>  
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.struts.xwork</groupId>
+        	<artifactId>xwork-core</artifactId>
+        	<version>2.2.3</version>
+        </dependency>  
+  </dependencies>
+  	<distributionManagement>
+  	</distributionManagement>
+  <build>
+  	<finalName>pcxa-seller</finalName>
+    <plugins>
+      <plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-war-plugin</artifactId>
+	        <version>2.4</version>
+	        <configuration>
+	        	<warName>pcxa</warName>
+	        </configuration>
+    	</plugin>
+    	<plugin>
+		  <groupId>org.eclipse.jetty</groupId>
+		  <artifactId>jetty-maven-plugin</artifactId>
+		  <configuration>
+		    <scanIntervalSeconds>10</scanIntervalSeconds>
+		    <webApp>
+		      <contextPath>/web</contextPath>
+		    </webApp>
+		  </configuration>
+		</plugin>
+    	
+    </plugins>
+  </build>
+</project>

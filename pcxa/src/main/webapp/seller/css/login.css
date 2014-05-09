@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color:#1A59A3;
+}
+.container{
+	background:url("../images/login/bg.jpg") top left transparent;
+	width:700px;
+	height:330px;
+	font-size: 12px;
+	color: rgb(31, 74, 101);
+	font-weight: bold;
+	font-family: "宋体";
+}
+.photo{
+	float:left;
+	height:100%;
+	width:30px;
+	padding-top:2px;
+}
+.usernameContent{
+	float:left;
+	margin-top:120px;
+	margin-left:400px;
+	height:40px;
+	width:300px;
+}
+.passwordContent{
+	clear:both;
+	float:left;
+	margin-top:0px;
+	margin-left:400px;
+	height:40px;
+	width:300px;
+}
+.validatorTipContainer{
+	float:right;
+	margin-right:85px;
+}
+.submitContent{
+	clear:both;
+	float:left;
+	margin-top:20px;
+	margin-left:585px;
+}
